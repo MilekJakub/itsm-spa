@@ -4,31 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="./home.css" />
   </head>
   <body>
     <div id="app">
-      <h1>Home</h1>
+      <nav>
+        <h1>Projects</h1>
+        <button class="create-button">Create</button>
+      </nav>
       <table>
-        <tr>
+        <tr class="header-row">
           <th>Project Name</th>
           <th>Description</th>
           <th></th>
         </tr>
-        <tr>
+        <tr class="table-row">
           <td>Project 1</td>
           <td>This is a description of Project 1.</td>
-          <td>
+          <td class="actions">
             <div class="dropdown">
               <button class="dot-menu">&#8942;</button>
               <div class="dropdown-content">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-                <a href="#">View</a>
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
               </div>
             </div>
           </td>
         </tr>
-        <!-- You can add more project rows here -->
+        <tr class="table-row">
+          <td>Project 1</td>
+          <td>This is a description of Project 1.</td>
+          <td class="actions">
+            <div class="dropdown">
+              <button class="dot-menu">&#8942;</button>
+              <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td>Project 1</td>
+          <td>This is a description of Project 1.</td>
+          <td class="actions">
+            <div class="dropdown">
+              <button class="dot-menu">&#8942;</button>
+              <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td>Project 1</td>
+          <td>This is a description of Project 1.</td>
+          <td class="actions">
+            <div class="dropdown">
+              <button class="dot-menu">&#8942;</button>
+              <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="table-row">
+          <td>Project 1</td>
+          <td>This is a description of Project 1.</td>
+          <td class="actions">
+            <div class="dropdown">
+              <button class="dot-menu">&#8942;</button>
+              <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
       </table>
     </div>
     <script type="module" src="home.ts"></script>

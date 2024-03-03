@@ -1,5 +1,4 @@
 import { isUser, User } from "./models/user/user.ts";
-import "./style.css";
 
 const userString = localStorage.getItem("user");
 const user = userString ? JSON.parse(userString) : null;

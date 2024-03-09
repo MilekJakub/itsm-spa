@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^20.11.25",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   },

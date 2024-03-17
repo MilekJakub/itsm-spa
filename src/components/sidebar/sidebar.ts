@@ -1,5 +1,4 @@
 import "./sidebar.css";
-import "boxicons";
 
 async function LoadSidebar(sidebarContainer: HTMLElement) {
   const response = await fetch("/src/components/sidebar/sidebar.html");

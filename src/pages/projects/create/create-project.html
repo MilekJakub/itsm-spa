@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Project</title>
+    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="./create-project.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="sidebar" class="sidebar"></div>
+      <div id="content" class="content">
+        <nav class="projects-nav">
+          <h1 class="projects-header">Create project</h1>
+        </nav>
+          <form class="create-project-form">
+            <label
+              for="create-project-name-input"
+              class="create-project-label"
+            >
+              Project Name:
+            </label>
+            <input
+              type="text"
+              id="create-project-name-input"
+              name="create-project-name-input"
+              required
+              class="create-project-name-input"
+            >
+            <label
+              for="create-project-description-input"
+              class="create-project-label"
+            >
+              Project Description:
+            </label>
+            <textarea
+              id="create-project-description-input"
+              name="create-project-description-input"
+              rows="4"
+              required
+              class="create-project-description-input"></textarea>
+            <button type="submit" id="create-project-submit-button">Submit</button>
+          </form>
+      </div>
+    </div>
+    <script type="module" src="create-project.ts"></script>
+    <script type="module" src="/src/components/sidebar/sidebar.ts"></script>
+  </body>
+</html>

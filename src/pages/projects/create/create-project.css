@@ -1,0 +1,37 @@
+.projects-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.create-project-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.create-project-name-input,
+.create-project-description-input {
+  display: block;
+  font-size: 1.1rem;
+  color: #fff;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 2px solid #555;
+  background-color: #222;
+  border-radius: 8px;
+}
+
+.create-project-description-input{
+  resize: none;
+}
+
+.create-project-name-input:focus,
+.create-project-description-input:focus {
+  border-color: #646cff;
+  outline: none;
+}

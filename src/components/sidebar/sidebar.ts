@@ -31,4 +31,6 @@ document.addEventListener('DOMContentLoaded', async (): Promise<void> => {
   sidebarMenuButton.addEventListener('click', function() {
     sidebarContainer.classList.toggle('active');
   });
+
+  console.log('[INFO]: Sidebar loaded.')
 });

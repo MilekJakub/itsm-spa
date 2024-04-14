@@ -5,28 +5,28 @@
   padding: 2rem 1rem 1rem 1rem;
 }
 
-h1 {
+.projects-header {
   display: inline-block;
 }
 
-table {
+.projects-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+.projects-table-header, .projects-table-data {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid white;
 }
 
-.dropdown {
+.projects-table-dropdown {
   float: right;
   margin-right: 1rem;
   width: fit-content;
 }
 
-.dot-menu {
+.projects-table-dot-menu {
   border: none;
   padding: 0.5rem;
   cursor: pointer;
@@ -35,7 +35,7 @@ th, td {
   color: #e7e7e7;
 }
 
-.dropdown-content {
+.projects-table-dropdown-content {
   display: none;
   position: absolute;
   text-align: center;
@@ -43,18 +43,17 @@ th, td {
   min-width: 8rem;
   z-index: 1;
 }
-
-.dropdown-item:hover {
-  background-color: #e7e7e7;
-}
-
-.dropdown-content a {
+.projects-table-dropdown-content a {
   color: black;
   padding: 0.6em 1.2em;
   text-decoration: none;
   display: block;
 }
 
-.table-row:hover {
+.projects-table-dropdown-item:hover {
+  background-color: #e7e7e7;
+}
+
+.projects-table-row:hover {
   background-color: #303030;
 }

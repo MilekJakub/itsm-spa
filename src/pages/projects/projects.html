@@ -9,83 +9,35 @@
   </head>
   <body>
     <div id="app">
-      <div id="sidebar"></div>
-      <nav id="projects-nav">
-        <h1>Your projects</h1>
-        <button class="create-button">Create</button>
-      </nav>
-      <table>
-        <tr class="header-row">
-          <th>Project Name</th>
-          <th>Description</th>
-          <th></th>
-        </tr>
-        <tr class="table-row">
-          <td>Project 1</td>
-          <td>This is a description of Project 1.</td>
-          <td class="actions">
-            <div class="dropdown">
-              <button class="dot-menu">&#8942;</button>
-              <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Edit</a>
-                <a class="dropdown-item" href="#">Delete</a>
+      <div id="sidebar" class="sidebar"></div>
+      <div id="content" class="content">
+
+        <nav id="projects-nav">
+          <h1 class="projects-header">Your projects</h1>
+          <button class="create-button">Create</button>
+        </nav>
+        <table class="projects-table">
+          <tr class="projects-header-row">
+            <th class="projects-table-header">Project Name</th>
+            <th class="projects-table-header">Description</th>
+            <th class="projects-table-header"></th>
+          </tr>
+          <tr class="projects-table-row">
+            <td class="projects-table-data">Project 1</td>
+            <td class="projects-table-data">This is a description of Project 1.</td>
+            <td class="projects-table-data projects-table-actions">
+              <div class="projects-table-dropdown">
+                <button class="projects-table-dot-menu">&#8942;</button>
+                <div class="projects-table-dropdown-content">
+                  <a class="projects-table-dropdown-item" href="#">Edit</a>
+                  <a class="projects-table-dropdown-item" href="#">Delete</a>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="table-row">
-          <td>Project 1</td>
-          <td>This is a description of Project 1.</td>
-          <td class="actions">
-            <div class="dropdown">
-              <button class="dot-menu">&#8942;</button>
-              <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Edit</a>
-                <a class="dropdown-item" href="#">Delete</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="table-row">
-          <td>Project 1</td>
-          <td>This is a description of Project 1.</td>
-          <td class="actions">
-            <div class="dropdown">
-              <button class="dot-menu">&#8942;</button>
-              <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Edit</a>
-                <a class="dropdown-item" href="#">Delete</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="table-row">
-          <td>Project 1</td>
-          <td>This is a description of Project 1.</td>
-          <td class="actions">
-            <div class="dropdown">
-              <button class="dot-menu">&#8942;</button>
-              <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Edit</a>
-                <a class="dropdown-item" href="#">Delete</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="table-row">
-          <td>Project 1</td>
-          <td>This is a description of Project 1.</td>
-          <td class="actions">
-            <div class="dropdown">
-              <button class="dot-menu">&#8942;</button>
-              <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Edit</a>
-                <a class="dropdown-item" href="#">Delete</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
+
+      </div>
     </div>
     <script type="module" src="projects.ts"></script>
     <script type="module" src="/src/components/sidebar/sidebar.ts"></script>

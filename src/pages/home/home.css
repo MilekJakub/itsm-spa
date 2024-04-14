@@ -1,0 +1,6 @@
+#home-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 1rem 1rem 1rem;
+}

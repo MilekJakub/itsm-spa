@@ -1,16 +1,16 @@
-import { isUser, User } from "./models/user/user.ts";
+import { User } from "./domain/users/user.ts";
+import {routes} from "./infrastructure/constants/routes.ts";
+
+localStorage.setItem("user", `{"id": 1, "firstName": "George", "lastName": "Hotz", "role": "Developer" }`);
 
 const userString = localStorage.getItem("user");
-const user = userString ? JSON.parse(userString) : null;
+const user = JSON.parse(userString ?? "{}") as User;
 
-if (!isUser(user) && authorize(user)) {
-  // location.href = "/src/pages/home/home.html";
+if (authorize(user)) {
+  window.location.href = routes.home.index;
 }
 
 function authorize(user: User): boolean {
-  // TODO: Check if user exists in database
   console.log(user);
   return true;
 }
-
-// const app = document.getElementById("app") as HTMLFormElement;

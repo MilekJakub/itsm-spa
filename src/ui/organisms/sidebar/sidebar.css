@@ -5,10 +5,6 @@
   border: 1px solid dodgerblue;
 }
 
-.sidebar-button {
-  background-color: transparent;
-}
-
 .sidebar {
   z-index: 1;
   position: absolute;
@@ -19,16 +15,6 @@
   border-right: 1px solid #e7e7e7;
   background-color: #1a1a1a;
   transition: all 0.5s ease;
-}
-
-/* ~ means sibling */
-.sidebar ~ .content {
-  position: relative;
-  top: 0;
-  left: 80px;
-  width: calc(100% - 80px);
-  transition: all 0.5s ease;
-
 }
 
 .sidebar.active {
@@ -88,6 +74,7 @@
   left: 50%;
   transform: translateX(-50%);
   top: 100px;
+  background-color: transparent;
 }
 
 .sidebar-user {

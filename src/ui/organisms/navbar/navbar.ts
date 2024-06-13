@@ -1,43 +1,30 @@
 import "./navbar.css";
 
-class Navbar {
-  navbarContainer: HTMLElement;
-  headerContainer: HTMLElement;
-  controlsContainer: HTMLElement;
-  hasHeader: boolean;
+export class Navbar {
+  private readonly _id: string;
+  private readonly _element: HTMLElement;
+  private readonly _headerContainer: HTMLElement;
+  private readonly _toolsContainer: HTMLElement;
+  private _hasHeader: boolean;
 
-  constructor(id: string | undefined = undefined) {
-    this.navbarContainer = document.createElement("nav");
-    this.navbarContainer.id = id ?? "navbar";
-    this.navbarContainer.className = "navbar";
+  constructor(id: string) {
+    this._id = id;
 
-    this.headerContainer = document.createElement("div");
-    this.headerContainer.className = "navbar-header-container";
+    this._element = document.createElement("nav");
+    this._element.id = this._id;
+    this._element.className = "navbar";
 
-    this.controlsContainer = document.createElement("div");
-    this.controlsContainer.className = "navbar-controls-container";
+    this._headerContainer = document.createElement("div");
+    this._headerContainer.className = "navbar-header-container";
 
-    this.hasHeader = false;
-  }
+    this._toolsContainer = document.createElement("div");
+    this._toolsContainer.className = "navbar-controls-container";
 
-  create() {
-    this.navbarContainer.appendChild(this.headerContainer)
-    this.navbarContainer.appendChild(this.controlsContainer);
-
-
-    return this.navbarContainer;
-  }
-}
-
-export class NavbarBuilder {
-  private navbar: Navbar;
-
-  constructor(id: string | undefined = undefined) {
-    this.navbar = new Navbar(id);
+    this._hasHeader = false;
   }
 
   public addHeader(text: string) {
-    if (this.navbar.hasHeader) {
+    if (this._hasHeader) {
       return this;
     }
 
@@ -45,18 +32,24 @@ export class NavbarBuilder {
     header.className = "navbar-header";
     header.textContent = text;
 
-    this.navbar.headerContainer.prepend(header);
-    this.navbar.hasHeader = true;
+    this._headerContainer.prepend(header);
+    this._hasHeader = true;
 
     return this;
   }
 
-  public addElement(element: HTMLElement) {
-    this.navbar.controlsContainer.appendChild(element);
+  public addTool(element: HTMLElement) {
+    this._toolsContainer.appendChild(element);
     return this;
   }
 
-  public build() {
-    return this.navbar.create();
+  public getId() {
+    return this._id;
+  }
+
+  public getElement() {
+    this._element.appendChild(this._headerContainer)
+    this._element.appendChild(this._toolsContainer);
+    return this._element;
   }
 }

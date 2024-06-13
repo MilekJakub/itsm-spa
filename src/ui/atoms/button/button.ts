@@ -1,21 +1,31 @@
 import "./button.css";
 
 export class Button {
-  public readonly element: HTMLButtonElement;
+  private readonly _id: string | undefined;
+  private readonly _element: HTMLButtonElement;
 
   constructor(id: string | undefined = undefined, classes: string[] | undefined = undefined) {
-    this.element = document.createElement("button");
-    this.element.classList.add("button");
-
-    classes?.forEach(cssClass => this.element.classList.add(cssClass));
+    this._element = document.createElement("button");
+    this._element.classList.add("button");
 
     if (id) {
-      this.element.id = id;
+      this._id = id;
+      this._element.id = this._id;
     }
+
+    classes?.forEach(cssClass => this._element.classList.add(cssClass));
   }
 
-  public addHeader(text: string) {
-    this.element.textContent = text;
+  public getId() {
+    return this._id;
+  }
+
+  public getElement() {
+    return this._element;
+  }
+
+  public setText(text: string) {
+    this._element.textContent = text;
     return this;
   }
 
@@ -24,7 +34,7 @@ export class Button {
     listener: EventListenerOrEventListenerObject,
     options?: boolean | AddEventListenerOptions | undefined,
   ) {
-    this.element.addEventListener(type, listener, options);
+    this._element.addEventListener(type, listener, options);
     return this;
   }
 }

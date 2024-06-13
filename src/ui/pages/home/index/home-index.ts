@@ -1,7 +1,7 @@
-import { createSidebar } from "../../../organisms/sidebar/sidebar.ts";
 import { renderElement } from "../../../utils.ts";
+import { Sidebar } from "../../../organisms/sidebar/sidebar.ts";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const sidebar = createSidebar();
-  renderElement("sidebar", sidebar);
+  const sidebar = new Sidebar();
+  renderElement(sidebar.getId(), sidebar.getElement());
 });

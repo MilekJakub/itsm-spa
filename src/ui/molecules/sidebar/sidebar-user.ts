@@ -1,4 +1,4 @@
-import {User} from "../../../domain/users/user.ts";
+import { User } from "../../../domain/users/user.ts";
 
 export class SidebarUser {
   public readonly element: HTMLElement;

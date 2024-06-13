@@ -1,16 +1,10 @@
 export class TableDataRow {
-  private readonly _id: string | undefined;
   private readonly _element: HTMLElement;
   private readonly _cells: HTMLElement[] = [];
 
-  constructor(id: string | undefined = undefined) {
+  constructor() {
     this._element = document.createElement('tr');
     this._element.classList.add('table-data-row');
-
-    if (id) {
-      this._id = id;
-      this._element.id = this._id;
-    }
   }
 
   getElement() {
@@ -22,7 +16,7 @@ export class TableDataRow {
     return this._cells.length;
   }
 
-  public addValues(...values: string[]) {
+  public addCells(...values: string[]) {
     values.forEach(value => this.addCell(value));
     return this;
   }

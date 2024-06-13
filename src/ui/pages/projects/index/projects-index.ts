@@ -4,12 +4,12 @@ import { routes } from "../../../../infrastructure/constants/routes.ts";
 import { Button } from "../../../atoms/button/button.ts";
 import { Sidebar } from "../../../organisms/sidebar/sidebar.ts";
 import { Navbar } from "../../../organisms/navbar/navbar.ts";
-import {Table} from "../../../organisms/table/table.ts";
-import {TableDataRow} from "../../../molecules/table/table-data-row.ts";
+import { Table } from "../../../organisms/table/table.ts";
+import { TableDataRow } from "../../../molecules/table/table-data-row.ts";
+import {TableHeaderRow} from "../../../molecules/table/table-header-row.ts";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const sidebar = new Sidebar("sidebar");
-  renderElement(sidebar.getId(), sidebar.getElement());
 
   const createButton = new Button()
     .setText("Create")
@@ -19,16 +19,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     .addHeader("Your projects")
     .addTool(createButton.getElement());
 
-  renderElement(navbar.getId(), navbar.getElement());
-
   const projects = await fetchProjects();
 
-  const dataRows = projects.map(project => new TableDataRow().addValues(project.id, project.name, project.description));
+  const headers = new TableHeaderRow()
+    .addHeaders("Id", "Name", "Description")
+    .addHeader("Actions", ["center"]);
+
+  const rows = projects.map(project =>
+    new TableDataRow()
+      .addCells(project.id, project.name, project.description)
+      .addCell(":", ["center"])
+  );
 
   const projectsTable = new Table("projects-table")
-    .addHeaderRow()
-    .addHeaders("Id", "Name", "Description")
-    .addDataRows(dataRows);
+    .addHeaderRow(headers)
+    .addDataRows(rows);
 
+  renderElement(sidebar.getId(), sidebar.getElement());
+  renderElement(navbar.getId(), navbar.getElement());
   renderElement(projectsTable.getId(), projectsTable.getElement());
 });

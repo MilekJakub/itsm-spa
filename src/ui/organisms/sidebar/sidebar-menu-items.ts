@@ -1,5 +1,5 @@
-import { MenuItem } from "../molecules/sidebar/sidebar-menu.ts";
-import { routes } from "../../infrastructure/constants/routes.ts";
+import { MenuItem } from "../../molecules/sidebar/sidebar-menu.ts";
+import { routes } from "../../../infrastructure/constants/routes.ts";
 
 export const menuItems: MenuItem[] = [
   {

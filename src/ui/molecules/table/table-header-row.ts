@@ -30,5 +30,11 @@ export class TableHeaderRow {
     classes?.forEach(cssClass => this._element.classList.add(cssClass));
 
     this._headers.push(header);
+    return this;
+  }
+
+  public addHeaders(...values: string[]) {
+    values.forEach(value => this.addHeader(value));
+    return this;
   }
 }

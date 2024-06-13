@@ -4,7 +4,7 @@ import 'boxicons/css/boxicons.min.css';
 import { SidebarTop } from "../../molecules/sidebar/sidebar-top.ts";
 import { SidebarUser } from "../../molecules/sidebar/sidebar-user.ts";
 import { SidebarMenu } from "../../molecules/sidebar/sidebar-menu.ts";
-import { menuItems } from "../../constants/sidebar-menu-items.ts";
+import { menuItems } from "./sidebar-menu-items.ts";
 
 export class Sidebar {
   private readonly _id: string;

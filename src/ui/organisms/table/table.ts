@@ -1,6 +1,5 @@
 import "./table.css";
-import { Project } from "../../../domain/projects/project.ts";
-import {createProjectsTableRow, TableDataRow} from "../../molecules/table/table-data-row.ts";
+import { TableDataRow } from "../../molecules/table/table-data-row.ts";
 import { TableHeaderRow } from "../../molecules/table/table-header-row.ts";
 
 export class Table {
@@ -34,32 +33,13 @@ export class Table {
     return this._id;
   }
 
-  public addHeaderRow(): Table {
+  public addHeaderRow(headerRow: TableHeaderRow) {
     if (this._hasHeaderRow) {
       throw new Error("[ERROR]: The table already has the header row.");
     }
 
-    this._headerRow = new TableHeaderRow();
+    this._headerRow = headerRow;
     this._hasHeaderRow = true;
-    return this;
-  }
-
-  public addHeaders(...values: string[]) {
-    values.forEach(value => this.addHeader(value));
-    return this;
-  }
-
-  public addHeader(value: string) {
-    if (!this._hasHeaderRow || !this._headerRow) {
-      throw new Error("[ERROR]: The table doesn't have the header row.");
-    }
-
-    this._headerRow.addHeader(value);
-    return this;
-  }
-
-  public addDataRows(dataRows: TableDataRow[]) {
-    dataRows.forEach(row => this.addDataRow(row));
     return this;
   }
 
@@ -73,33 +53,9 @@ export class Table {
     this._dataRows.push(dataRow);
     return this;
   }
-}
 
-export const createProjectsTable = (projects: Project[]) => {
-  const table = document.createElement('table');
-  table.id = "id";
-  table.classList.add('table');
-
-  const headerRow = document.createElement('tr');
-  headerRow.classList.add('table-header-row');
-
-  const headers = ['Project Name', 'Description', 'Actions'];
-  headers.forEach((text) => {
-    const th = document.createElement('th');
-    th.classList.add('table-header');
-    if (text === 'Actions') {
-      th.classList.add('table-actions-header');
-    }
-    th.textContent = text;
-    headerRow.appendChild(th);
-  });
-
-  table.appendChild(headerRow);
-
-  projects.forEach((project) => {
-    const row = createProjectsTableRow(project.name, project.description);
-    table.appendChild(row);
-  })
-
-  return table;
+  public addDataRows(dataRows: TableDataRow[]) {
+    dataRows.forEach(row => this.addDataRow(row));
+    return this;
+  }
 }

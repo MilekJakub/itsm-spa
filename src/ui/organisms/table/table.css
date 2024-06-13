@@ -4,16 +4,15 @@
 }
 
 .table-header-row, .table-data-row {
-  padding: 1rem;
   text-align: left;
   border-bottom: 1px solid white;
 }
 
-.table-actions-header-cell {
+.center {
   text-align: center;
 }
 
-.table-row:hover {
+.table-data-row:hover {
   background-color: #303030;
 }
 
@@ -22,7 +21,7 @@
 }
 
 .table-data-cell {
-
+  padding: 1rem;
 }
 
 /*

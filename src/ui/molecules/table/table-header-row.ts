@@ -27,7 +27,7 @@ export class TableHeaderRow {
     header.classList.add('table-header-cell');
 
     header.textContent = value;
-    classes?.forEach(cssClass => this._element.classList.add(cssClass));
+    classes?.forEach(cssClass => header.classList.add(cssClass));
 
     this._headers.push(header);
     return this;

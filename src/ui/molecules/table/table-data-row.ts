@@ -26,7 +26,7 @@ export class TableDataRow {
     dataCell.classList.add('table-data-cell');
 
     dataCell.textContent = value;
-    classes?.forEach(cssClass => this._element.classList.add(cssClass));
+    classes?.forEach(cssClass => dataCell.classList.add(cssClass));
 
     this._cells.push(dataCell);
     return this;

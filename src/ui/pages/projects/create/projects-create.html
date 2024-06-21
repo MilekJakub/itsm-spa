@@ -6,14 +6,13 @@
     <title>Create Project</title>
     <link rel="stylesheet" href="/src/style.css" />
     <link rel="stylesheet" href="projects-create.css" />
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
   </head>
   <body>
     <div id="app">
-      <div id="sidebar" class="sidebar"></div>
+      <div id="sidebarx" class="sidebar"></div>
       <div id="content" class="content">
-        <nav class="projects-navbar">
-          <h1 class="projects-header">Create project</h1>
-        </nav>
+        <nav id="projects-navbar"></nav>
           <form class="create-project-form">
             <label
               for="create-project-name-input"
@@ -40,7 +39,7 @@
               rows="4"
               required
               class="create-project-description-input"></textarea>
-            <button type="submit" id="create-project-submit-button">Submit</button>
+            <button type="submit" id="create-project-submit-button" class="button">Submit</button>
           </form>
       </div>
     </div>

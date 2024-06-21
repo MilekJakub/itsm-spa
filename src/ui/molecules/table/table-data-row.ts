@@ -1,3 +1,5 @@
+import { DropdownButton } from "../../atoms/dropdown-button/dropdown-button.ts";
+
 export class TableDataRow {
   private readonly _element: HTMLElement;
   private readonly _cells: HTMLElement[] = [];
@@ -21,36 +23,30 @@ export class TableDataRow {
     return this;
   }
 
-  public addCell(value: string, classes: string[] | undefined = undefined) {
+  public addCell(value: string | HTMLElement, classes: string[] | undefined = undefined) {
     const dataCell = document.createElement('td');
     dataCell.classList.add('table-data-cell');
 
-    dataCell.textContent = value;
+    if (typeof value === "string") {
+      dataCell.textContent = value;
+    } else {
+      dataCell.appendChild(value);
+    }
+
     classes?.forEach(cssClass => dataCell.classList.add(cssClass));
 
     this._cells.push(dataCell);
     return this;
   }
-}
 
-export const createProjectsTableRow = (projectName: string, description: string): HTMLTableRowElement => {
-  const row = document.createElement("tr");
-  row.className = "table-data-row";
+  public addActionCell() {
+    const actionCell = document.createElement('td');
+    actionCell.classList.add('table-data-cell', 'flex', 'justify-center');
 
-  const projectNameElement = document.createElement("td");
-  projectNameElement.className = "table-data";
-  projectNameElement.textContent = projectName;
+    const dropdownButton = new DropdownButton();
+    actionCell.appendChild(dropdownButton.getElement());
 
-  const projectDescriptionElement = document.createElement("td");
-  projectDescriptionElement.className = "table-data";
-  projectDescriptionElement.textContent = description;
-
-  const projectActionsElement = document.createElement("td");
-  projectActionsElement.className = "table-data";
-
-  row.appendChild(projectNameElement);
-  row.appendChild(projectDescriptionElement);
-  row.appendChild(projectActionsElement);
-
-  return row;
+    this._cells.push(actionCell);
+    return this;
+  }
 }

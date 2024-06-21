@@ -6,7 +6,7 @@ import { Sidebar } from "../../../organisms/sidebar/sidebar.ts";
 import { Navbar } from "../../../organisms/navbar/navbar.ts";
 import { Table } from "../../../organisms/table/table.ts";
 import { TableDataRow } from "../../../molecules/table/table-data-row.ts";
-import {TableHeaderRow} from "../../../molecules/table/table-header-row.ts";
+import { TableHeaderRow } from "../../../molecules/table/table-header-row.ts";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const sidebar = new Sidebar("sidebar");
@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const headers = new TableHeaderRow()
     .addHeaders("Id", "Name", "Description")
-    .addHeader("Actions", ["center"]);
+    .addHeader("Actions", ["text-center"]);
 
   const rows = projects.map(project =>
     new TableDataRow()
       .addCells(project.id, project.name, project.description)
-      .addCell(":", ["center"])
+      .addActionCell()
   );
 
   const projectsTable = new Table("projects-table")

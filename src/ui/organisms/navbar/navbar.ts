@@ -1,40 +1,38 @@
-import "./navbar.css";
+interface NavbarProps {
+  id: string;
+  classes?: string[];
+}
 
 export class Navbar {
   private readonly _id: string;
   private readonly _element: HTMLElement;
-  private readonly _headerContainer: HTMLElement;
   private readonly _toolsContainer: HTMLElement;
+  private _header?: HTMLElement;
   private _hasHeader: boolean;
 
-  constructor(id: string) {
+  constructor({ id, classes }: NavbarProps) {
     this._id = id;
 
     this._element = document.createElement("nav");
     this._element.id = this._id;
-    this._element.className = "navbar";
+    this._element.classList.add("navbar");
 
-    this._headerContainer = document.createElement("div");
-    this._headerContainer.className = "navbar-header-container";
+    if (classes) {
+      this._element.classList.add(...classes);
+    }
 
     this._toolsContainer = document.createElement("div");
-    this._toolsContainer.className = "navbar-controls-container";
+    this._toolsContainer.classList.add("navbar-tools");
 
     this._hasHeader = false;
   }
 
-  public addHeader(text: string) {
+  public addHeader(header: HTMLHeadingElement) {
     if (this._hasHeader) {
       return this;
     }
-
-    const header = document.createElement("h2");
-    header.className = "navbar-header";
-    header.textContent = text;
-
-    this._headerContainer.prepend(header);
+    this._header = header;
     this._hasHeader = true;
-
     return this;
   }
 
@@ -48,7 +46,10 @@ export class Navbar {
   }
 
   public getElement() {
-    this._element.appendChild(this._headerContainer)
+    if (this._hasHeader && this._header) {
+      this._element.appendChild(this._header)
+    }
+
     this._element.appendChild(this._toolsContainer);
     return this._element;
   }

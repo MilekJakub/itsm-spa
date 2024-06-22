@@ -1,4 +1,4 @@
-import { User } from "./domain/users/user.ts";
+import { User } from "./domain/user.ts";
 import { routes } from "./infrastructure/constants/routes.ts";
 
 localStorage.setItem("user", `{"id": 1, "firstName": "George", "lastName": "Hotz", "role": "Developer" }`);

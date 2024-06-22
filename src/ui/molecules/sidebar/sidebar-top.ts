@@ -1,37 +1,45 @@
-import { Button } from "../../atoms/button/button.ts";
+import { Button } from "../../atoms/buttons/button.ts";
+
+interface SidebarTopProps {
+  expandButtonOnClick: () => void;
+}
 
 export class SidebarTop {
-  public readonly element: HTMLElement;
+  private readonly _element: HTMLElement;
   // private readonly sidebarLogo: HTMLElement;
-  private readonly sidebarHeader: HTMLElement;
-  private readonly sidebarButton: HTMLElement;
+  private readonly _sidebarHeader: HTMLElement;
+  private readonly _sidebarButton: HTMLElement;
 
-  constructor(onClick: EventListenerOrEventListenerObject) {
-    this.element = document.createElement('div');
-    this.element.className = 'sidebar-top';
+  constructor({ expandButtonOnClick }: SidebarTopProps) {
+    this._element = document.createElement('div');
+    this._element.classList.add('sidebar-top');
 
     // this.sidebarLogo = document.createElement('div');
     // this.sidebarLogo.className = 'sidebar-logo';
 
     const logoIcon = document.createElement('i');
-    logoIcon.className = 'bx bx-pyramid icon sidebar-logo-icon';
+    logoIcon.classList.add('icon', 'bx', 'bx-pyramid');
 
-    this.sidebarHeader = document.createElement('span');
-    this.sidebarHeader.className = 'sidebar-header';
-    this.sidebarHeader.textContent = 'ITSM';
+    this._sidebarHeader = document.createElement('span');
+    this._sidebarHeader.classList.add('sidebar-header');
+    this._sidebarHeader.textContent = 'ITSM';
 
     // this.sidebarLogo.appendChild(logoIcon);
     // this.sidebarLogo.appendChild(this.sidebarHeader);
 
-    this.sidebarButton = new Button("sidebar-menu-button")
-      .addEventListener("click", onClick)
+    this._sidebarButton = new Button()
+      .addEventListener("click", expandButtonOnClick)
       .getElement();
 
     const buttonIcon = document.createElement('i');
-    buttonIcon.className = 'bx bx-menu icon';
-    this.sidebarButton.appendChild(buttonIcon);
+    buttonIcon.classList.add('icon', 'bx', 'bx-menu');
+    this._sidebarButton.appendChild(buttonIcon);
 
     // this.element.appendChild(this.sidebarLogo);
-    this.element.appendChild(this.sidebarButton);
+    this._element.appendChild(this._sidebarButton);
+  }
+
+  public getElement() {
+    return this._element;
   }
 }

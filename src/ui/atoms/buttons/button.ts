@@ -1,10 +1,13 @@
-import "./button.css";
+interface ButtonProps {
+  id?: string;
+  classes?: string[];
+}
 
 export class Button {
   private readonly _id: string | undefined;
   private readonly _element: HTMLButtonElement;
 
-  constructor(id: string | undefined = undefined, classes: string[] | undefined = undefined) {
+  constructor({ id, classes }: ButtonProps = {}) {
     this._element = document.createElement("button");
     this._element.classList.add("button");
 
@@ -13,7 +16,9 @@ export class Button {
       this._element.id = this._id;
     }
 
-    classes?.forEach(cssClass => this._element.classList.add(cssClass));
+    if (classes) {
+      this._element.classList.add(...classes);
+    }
   }
 
   public getId() {
@@ -32,8 +37,7 @@ export class Button {
   public addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | AddEventListenerOptions | undefined,
-  ) {
+    options?: boolean | AddEventListenerOptions) {
     this._element.addEventListener(type, listener, options);
     return this;
   }

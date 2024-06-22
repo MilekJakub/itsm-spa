@@ -1,20 +1,27 @@
-import "./table.css";
-import { TableDataRow } from "../../molecules/table/table-data-row.ts";
-import { TableHeaderRow } from "../../molecules/table/table-header-row.ts";
+import { TableRow } from "../../molecules/table/table-row.ts";
+
+interface TableProps {
+  id: string;
+  classes?: string[];
+}
 
 export class Table {
   private readonly _id: string;
   private readonly _element: HTMLTableElement;
   private _hasHeaderRow: boolean;
-  private _headerRow: TableHeaderRow | undefined;
-  private _dataRows: TableDataRow[] = [];
+  private _headerRow: TableRow | undefined;
+  private _dataRows: TableRow[] = [];
 
-  constructor(id: string) {
+  constructor({ id, classes }: TableProps) {
     this._id = id;
 
     this._element = document.createElement("table") as HTMLTableElement;
     this._element.id = this._id;
     this._element.classList.add("table");
+
+    if (classes) {
+      this._element.classList.add(...classes);
+    }
 
     this._hasHeaderRow = false;
   }
@@ -33,7 +40,7 @@ export class Table {
     return this._id;
   }
 
-  public addHeaderRow(headerRow: TableHeaderRow) {
+  public addHeaderRow(headerRow: TableRow) {
     if (this._hasHeaderRow) {
       throw new Error("[ERROR]: The table already has the header row.");
     }
@@ -43,7 +50,7 @@ export class Table {
     return this;
   }
 
-  public addDataRow(dataRow: TableDataRow) {
+  public addDataRow(dataRow: TableRow) {
     const tooManyColumns = this._hasHeaderRow && this._headerRow && dataRow.getColumns() > this._headerRow.getColumns();
 
     if (tooManyColumns) {
@@ -54,7 +61,7 @@ export class Table {
     return this;
   }
 
-  public addDataRows(dataRows: TableDataRow[]) {
+  public addDataRows(dataRows: TableRow[]) {
     dataRows.forEach(row => this.addDataRow(row));
     return this;
   }

@@ -1,35 +1,35 @@
-import { MenuItem } from "../../molecules/sidebar/sidebar-menu.ts";
 import { routes } from "../../../infrastructure/constants/routes.ts";
+import { SidebarMenuItemProps } from "../../atoms/sidebar/sidebar-menu-item.ts";
 
-export const menuItems: MenuItem[] = [
+export const menuItemsProps: SidebarMenuItemProps[] = [
   {
     href: routes.home.index,
-    iconClasses: 'icon bx bxs-home',
-    navText: 'Home',
+    iconClasses: ["icon", "bx", "bxs-home"],
+    text: 'Home',
     tooltip: 'Home'
   },
   {
     href: '#',
-    iconClasses: 'icon bx bx-task',
-    navText: 'Stories',
+    iconClasses: ["icon", "bx", "bx-task"],
+    text: 'Stories',
     tooltip: 'Stories'
   },
   {
     href: routes.project.index,
-    iconClasses: 'icon bx bxs-layout',
-    navText: 'Projects',
+    iconClasses: ["icon", "bx", "bxs-layout"],
+    text: 'Projects',
     tooltip: 'Projects'
   },
   {
     href: '#',
-    iconClasses: 'icon bx bxs-cog',
-    navText: 'Settings',
+    iconClasses: ["icon", "bx", "bxs-cog"],
+    text: 'Settings',
     tooltip: 'Settings'
   },
   {
     href: '#',
-    iconClasses: 'icon bx bx-log-out',
-    navText: 'Logout',
+    iconClasses: ["icon", "bx", "bxs-log-out"],
+    text: 'Logout',
     tooltip: 'Logout'
   }
 ];

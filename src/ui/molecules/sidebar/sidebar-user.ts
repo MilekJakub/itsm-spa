@@ -1,33 +1,43 @@
-import { User } from "../../../domain/users/user.ts";
+import { User } from "../../../domain/user.ts";
+
+interface SidebarUserProps {
+  username: string;
+  role: string;
+}
 
 export class SidebarUser {
-  public readonly element: HTMLElement;
-  private readonly userIcon: HTMLElement;
-  private readonly username: HTMLElement;
-  private readonly userRole: HTMLElement;
+  private readonly _element: HTMLElement;
+  private readonly _userIcon: HTMLElement;
+  private readonly _username: HTMLElement;
+  private readonly _userRole: HTMLElement;
 
   // @ts-ignore
-  constructor(username: string, role: string) {
-    this.element = document.createElement('div');
-    this.element.className = 'sidebar-user';
+  constructor({ username, role }: SidebarUserProps) {
+    this._element = document.createElement('div');
+    this._element.classList.add('sidebar-user');
 
-    this.userIcon = document.createElement('i');
-    this.userIcon.className = 'bx bx-user-circle icon sidebar-user-icon';
+    this._userIcon = document.createElement('i');
+    this._userIcon.classList.add('icon', 'bx', 'bx-user-circle');
 
+    // temporary for testing purposes
     const userString = localStorage.getItem("user");
     const user = JSON.parse(userString ?? "{}") as User;
 
-    this.username = document.createElement('p');
-    this.username.id = 'username';
-    this.username.className = 'bold';
-    this.username.textContent = user.firstName;
+    this._username = document.createElement('p');
+    this._username.id = 'username';
+    this._username.classList.add('font-bold');
+    this._username.textContent = user.firstName;
 
-    this.userRole = document.createElement('p');
-    this.userRole.id = 'user-role';
-    this.userRole.textContent = user.role;
+    this._userRole = document.createElement('p');
+    this._userRole.id = 'user-role';
+    this._userRole.textContent = user.role;
 
-    this.element.appendChild(this.userIcon);
-    this.element.appendChild(this.username);
-    this.element.appendChild(this.userRole);
+    this._element.appendChild(this._userIcon);
+    this._element.appendChild(this._username);
+    this._element.appendChild(this._userRole);
+  }
+
+  public getElement() {
+    return this._element;
   }
 }

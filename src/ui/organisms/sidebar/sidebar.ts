@@ -5,7 +5,7 @@ import { SidebarTop } from "../../molecules/sidebar/sidebar-top.ts";
 import { SidebarUser } from "../../molecules/sidebar/sidebar-user.ts";
 import { SidebarMenu } from "../../molecules/sidebar/sidebar-menu.ts";
 import { menuItemsProps } from "./sidebar-menu-items.ts";
-import {SidebarMenuItem} from "../../atoms/sidebar/sidebar-menu-item.ts";
+import { SidebarMenuItem } from "../../atoms/sidebar/sidebar-menu-item.ts";
 
 interface SidebarProps {
   id: string;

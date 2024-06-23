@@ -1,6 +1,4 @@
-import { renderElement } from "../../../utils.ts";
 import { ProjectsService } from "../../../../infrastructure/services/projectsService.ts";
-import { routes } from "../../../../infrastructure/constants/routes.ts";
 import { Button } from "../../../atoms/buttons/button.ts";
 import { Sidebar } from "../../../organisms/sidebar/sidebar.ts";
 import { Navbar } from "../../../organisms/navbar/navbar.ts";
@@ -12,24 +10,13 @@ import { TableDataCell } from "../../../atoms/table/table-data-cell.ts";
 import { TableHeaderCell } from "../../../atoms/table/table-header-cell.ts";
 import { Header } from "../../../atoms/text/header.ts";
 import { Project } from "../../../../domain/project.ts";
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const sidebar = new Sidebar({ id: "sidebar" });
-  const navbar = createNavbar();
-
-  const projectsService = new ProjectsService();
-  const projects = await projectsService.fetchProjects();
-  const table = createTable(projects);
-
-  renderElement(sidebar.getId(), sidebar.getElement());
-  renderElement(navbar.getId(), navbar.getElement());
-  renderElement(table.getId(), table.getElement());
-});
+import { renderElement } from "../../../../infrastructure/ui/renderer.ts";
+import { routes } from "../../../../infrastructure/ui/router.ts";
 
 const createNavbar = (): Navbar => {
   const navButton = new Button({classes: ["rounded-lg", "border", "border-transparent", "px-4", "py-2", "bg-white", "text-black", "cursor-pointer"]})
     .setText("Create")
-    .addEventListener("click", () => window.location.href = routes.project.create)
+    .addEventListener("click", () => window.location.href = routes.projects.create.path)
     .getElement();
 
   const navHeading = new Header({
@@ -69,10 +56,10 @@ const createActionsButton = (): HTMLElement => {
     text: ":",
     containerClasses: ["flex", "w-100", "h-100", "justify-center"],
     buttonClasses: ["px-2"],
-    menuClasses: ["absolute", "bg-white", "text-black"]
+    menuClasses: ["absolute", "bg-white", "text-black", "p-2"]
   });
 
-  const menuItemClasses = ["hover:cursor-pointer", "hover:bg-gray-200", "p-2"];
+  const menuItemClasses = ["hover:cursor-pointer", "hover:bg-gray-200", "px-4"];
 
   const viewMenuItem = new DropdownMenuItem({
     text: "View",
@@ -99,3 +86,18 @@ const createActionsButton = (): HTMLElement => {
 
   return dropdownButton.getElement();
 }
+
+document.title = "Projects";
+
+const sidebar = new Sidebar({ id: "sidebar" });
+const navbar = createNavbar();
+
+const projectsService = new ProjectsService();
+const projects = await projectsService.fetchProjects();
+const table = createTable(projects);
+
+renderElement(sidebar.getId(), sidebar.getElement());
+renderElement(navbar.getId(), navbar.getElement());
+renderElement(table.getId(), table.getElement());
+
+

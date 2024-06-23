@@ -1,16 +1,17 @@
 import { User } from "./domain/user.ts";
-import { routes } from "./infrastructure/constants/routes.ts";
+import { renderPage } from "./infrastructure/ui/renderer.ts";
+import {resolveRoute, routes} from "./infrastructure/ui/router.ts";
+
+function authorize(user: User): boolean {
+  return !!user;
+}
 
 localStorage.setItem("user", `{"id": 1, "firstName": "George", "lastName": "Hotz", "role": "Developer" }`);
-
 const userString = localStorage.getItem("user");
 const user = JSON.parse(userString ?? "{}") as User;
 
-if (authorize(user)) {
-  window.location.href = routes.home.index;
+if (!authorize(user)) {
+  await renderPage(routes.home.index);
 }
 
-function authorize(user: User): boolean {
-  console.log(user);
-  return true;
-}
+await resolveRoute();

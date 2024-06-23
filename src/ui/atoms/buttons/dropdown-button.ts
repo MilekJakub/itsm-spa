@@ -30,7 +30,10 @@ export class DropdownButton {
     this._button = document.createElement('button');
     this._button.classList.add('dropdown-button');
     this._button.textContent = text;
-    this._button.addEventListener('click', () => this.toggleMenu());
+    this._button.addEventListener('click', (e: MouseEvent) => {
+      e.stopPropagation();
+      this.toggleMenu();
+    });
 
     if (buttonClasses) {
       this._button.classList.add(...buttonClasses);
@@ -42,6 +45,22 @@ export class DropdownButton {
     if (menuClasses) {
       this._menu.classList.add(...menuClasses);
     }
+
+    document.body.addEventListener('click', (e: MouseEvent) => {
+      e.stopPropagation();
+      if (!this._menu.classList.contains("hidden")) {
+        this._menu.classList.add("hidden");
+      }
+    });
+
+    document.body.addEventListener('keydown', (e: KeyboardEvent) => {
+      e.stopPropagation();
+      if (e.key === "Escape") {
+        if (!this._menu.classList.contains("hidden")) {
+          this._menu.classList.add("hidden");
+        }
+      }
+    });
 
     this._element.appendChild(this._button);
     this._element.appendChild(this._menu);

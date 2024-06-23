@@ -1,9 +1,9 @@
-import { routes } from "../../../infrastructure/constants/routes.ts";
 import { SidebarMenuItemProps } from "../../atoms/sidebar/sidebar-menu-item.ts";
+import {routes} from "../../../infrastructure/ui/router.ts";
 
 export const menuItemsProps: SidebarMenuItemProps[] = [
   {
-    href: routes.home.index,
+    href: routes.home.index.path,
     iconClasses: ["icon", "bx", "bxs-home"],
     text: 'Home',
     tooltip: 'Home'
@@ -15,7 +15,7 @@ export const menuItemsProps: SidebarMenuItemProps[] = [
     tooltip: 'Stories'
   },
   {
-    href: routes.project.index,
+    href: routes.projects.index.path,
     iconClasses: ["icon", "bx", "bxs-layout"],
     text: 'Projects',
     tooltip: 'Projects'

@@ -31,6 +31,10 @@ export class SidebarMenuItem {
     spanTooltip.className = 'sidebar-tooltip';
     spanTooltip.textContent = tooltip;
     this._element.appendChild(spanTooltip);
+
+    this._element.addEventListener("click", async () => {
+
+    })
   }
 
   public getElement() {

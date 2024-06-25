@@ -51,6 +51,10 @@ export const findRoutePropsByPath = (searchPath: string): RouteProps | undefined
 }
 
 export const resolveRoute = async () => {
+  if (window.location.pathname === "/") {
+    window.location.pathname = "/home";
+  }
+
   console.log(`[ROUTER] path: ${window.location.pathname}`)
   const routeProps = findRoutePropsByPath(window.location.pathname);
   if (routeProps) {

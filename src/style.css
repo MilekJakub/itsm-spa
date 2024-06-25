@@ -632,6 +632,14 @@ video {
   display: none;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
 .w-full {
   width: 100%;
 }
@@ -642,6 +650,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .justify-center {
@@ -703,6 +715,16 @@ video {
 
 .text-left {
   text-align: left;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .font-bold {

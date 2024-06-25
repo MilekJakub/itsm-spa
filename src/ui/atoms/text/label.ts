@@ -1,24 +1,22 @@
-interface ButtonProps {
+interface LabelProps {
   id?: string;
   classes?: string[];
   text?: string;
-  disabled?: boolean;
+  relatedComponentId?: string;
 }
 
-export class Button {
-  private readonly _id: string | undefined;
-  private readonly _element: HTMLButtonElement;
+export class Label {
+  private readonly _element: HTMLLabelElement;
 
-  constructor({ id, classes, text, disabled }: ButtonProps = {}) {
-    this._element = document.createElement("button");
-    this._element.classList.add("button");
+  constructor({ id, classes = [], text = '', relatedComponentId }: LabelProps = {}) {
+    this._element = document.createElement("label");
+    this._element.classList.add("label");
 
     if (id) {
-      this._id = id;
-      this._element.id = this._id;
+      this._element.id = id;
     }
 
-    if (classes) {
+    if (classes.length > 0) {
       this._element.classList.add(...classes);
     }
 
@@ -26,16 +24,16 @@ export class Button {
       this._element.textContent = text;
     }
 
-    if (disabled !== undefined) {
-      this._element.disabled = disabled;
+    if (relatedComponentId) {
+      this._element.htmlFor = relatedComponentId;
     }
   }
 
   public getId() {
-    return this._id;
+    return this._element.id;
   }
 
-  public getElement(): HTMLButtonElement {
+  public getElement() {
     return this._element;
   }
 
@@ -59,13 +57,13 @@ export class Button {
     return this;
   }
 
-  public setDisabled(disabled: boolean) {
-    this._element.disabled = disabled;
+  public setFor(forId: string) {
+    this._element.htmlFor = forId;
     return this;
   }
 
   public addEventListener(
-    type: string,
+    type: keyof HTMLElementEventMap,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | AddEventListenerOptions
   ) {

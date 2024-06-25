@@ -1,7 +1,7 @@
 import { RouteProps } from "./router.ts";
 
 export const renderPage = async (routeProps: RouteProps) => {
-  let dirRouteParts = routeProps.dir.split('/');
+  let dirRouteParts = routeProps.dir.split("/");
 
   let htmlFileName: string;
 
@@ -22,11 +22,11 @@ export const renderPage = async (routeProps: RouteProps) => {
   const scriptFileName = `${dirRouteParts[0]}-${dirRouteParts[1]}.ts`;
   const scriptFilePath = `${routeProps.dir}/${scriptFileName}`;
 
-  const script = document.createElement('script');
+  const script = document.createElement("script");
   script.type = "module";
   script.src = scriptFilePath;
   document.body.appendChild(script);
-}
+};
 
 export const renderElement = (id: string, element: HTMLElement) => {
   const container = document.getElementById(id);

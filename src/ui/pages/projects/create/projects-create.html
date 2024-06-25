@@ -1,48 +1,38 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Project</title>
-    <link rel="stylesheet" href="/src/style.css" />
-    <link rel="stylesheet" href="projects-create.css" />
-    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <div id="app">
-      <div id="sidebarx" class="sidebar"></div>
-      <div id="content" class="content">
-        <nav id="projects-navbar"></nav>
-          <form class="create-project-form">
-            <label
-              for="create-project-name-input"
-              class="create-project-label"
-            >
-              Project Name:
-            </label>
-            <input
-              type="text"
-              id="create-project-name-input"
-              name="create-project-name-input"
-              required
-              class="create-project-name-input"
-            >
-            <label
-              for="create-project-description-input"
-              class="create-project-label"
-            >
-              Project Description:
-            </label>
-            <textarea
-              id="create-project-description-input"
-              name="create-project-description-input"
-              rows="4"
-              required
-              class="create-project-description-input"></textarea>
-            <button type="submit" id="create-project-submit-button" class="button">Submit</button>
-          </form>
-      </div>
-    </div>
-    <script type="module" src="projects-create.ts"></script>
-  </body>
-</html>
+<div id="app">
+  <div id="sidebar"></div>
+  <div id="content">
+    <div id="navbar"></div>
+    <div id="form"></div>
+  </div>
+</div>
+
+<!--
+
+<label
+  for="create-project-name-input"
+  class="create-project-label"
+>
+  Project Name:
+</label>
+<input
+  type="text"
+  id="create-project-name-input"
+  name="create-project-name-input"
+  required
+  class="create-project-name-input"
+>
+<label
+  for="create-project-description-input"
+  class="create-project-label"
+>
+  Project Description:
+</label>
+<textarea
+  id="create-project-description-input"
+  name="create-project-description-input"
+  rows="4"
+  required
+  class="create-project-description-input"></textarea>
+<button type="submit" id="create-project-submit-button" class="button">Submit</button>
+
+-->

@@ -1,7 +1,7 @@
 interface MenuItemProps {
   text: string;
   onClickHandler: () => void;
-  classes?: string[]
+  classes?: string[];
 }
 
 export class DropdownMenuItem {
@@ -17,7 +17,7 @@ export class DropdownMenuItem {
     }
   }
 
-  getElement() {
+  public getElement() {
     return this._element;
   }
 }

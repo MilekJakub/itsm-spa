@@ -1,17 +1,19 @@
-interface ButtonProps {
+interface InputProps {
   id?: string;
   classes?: string[];
-  text?: string;
+  type?: string;
+  value?: string;
+  placeholder?: string;
   disabled?: boolean;
 }
 
-export class Button {
+export class Input {
   private readonly _id: string | undefined;
-  private readonly _element: HTMLButtonElement;
+  private readonly _element: HTMLInputElement;
 
-  constructor({ id, classes, text, disabled }: ButtonProps = {}) {
-    this._element = document.createElement("button");
-    this._element.classList.add("button");
+  constructor({ id, classes, type = 'text', value, placeholder, disabled }: InputProps = {}) {
+    this._element = document.createElement("input");
+    this._element.classList.add("input");
 
     if (id) {
       this._id = id;
@@ -22,8 +24,14 @@ export class Button {
       this._element.classList.add(...classes);
     }
 
-    if (text) {
-      this._element.textContent = text;
+    this._element.type = type;
+
+    if (value) {
+      this._element.value = value;
+    }
+
+    if (placeholder) {
+      this._element.placeholder = placeholder;
     }
 
     if (disabled !== undefined) {
@@ -35,12 +43,27 @@ export class Button {
     return this._id;
   }
 
-  public getElement(): HTMLButtonElement {
+  public getElement(): HTMLInputElement {
     return this._element;
   }
 
-  public setText(text: string) {
-    this._element.textContent = text;
+  public setType(type: string) {
+    this._element.type = type;
+    return this;
+  }
+
+  public setValue(value: string) {
+    this._element.value = value;
+    return this;
+  }
+
+  public setPlaceholder(placeholder: string) {
+    this._element.placeholder = placeholder;
+    return this;
+  }
+
+  public setDisabled(disabled: boolean) {
+    this._element.disabled = disabled;
     return this;
   }
 
@@ -56,11 +79,6 @@ export class Button {
 
   public toggleClass(className: string) {
     this._element.classList.toggle(className);
-    return this;
-  }
-
-  public setDisabled(disabled: boolean) {
-    this._element.disabled = disabled;
     return this;
   }
 

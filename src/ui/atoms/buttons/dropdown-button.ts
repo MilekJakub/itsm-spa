@@ -1,11 +1,11 @@
-import { DropdownMenuItem } from "./dropdown-menu-item.ts";
+import { DropdownMenuItem } from "./dropdown-menu-item";
 
 interface DropdownButtonProps {
-  id?: string,
+  id?: string;
   text: string;
-  containerClasses?: string[]
-  buttonClasses?: string[]
-  menuClasses?: string[]
+  containerClasses?: string[];
+  buttonClasses?: string[];
+  menuClasses?: string[];
 }
 
 export class DropdownButton {
@@ -46,21 +46,8 @@ export class DropdownButton {
       this._menu.classList.add(...menuClasses);
     }
 
-    document.body.addEventListener('click', (e: MouseEvent) => {
-      e.stopPropagation();
-      if (!this._menu.classList.contains("hidden")) {
-        this._menu.classList.add("hidden");
-      }
-    });
-
-    document.body.addEventListener('keydown', (e: KeyboardEvent) => {
-      e.stopPropagation();
-      if (e.key === "Escape") {
-        if (!this._menu.classList.contains("hidden")) {
-          this._menu.classList.add("hidden");
-        }
-      }
-    });
+    document.body.addEventListener('click', this.handleDocumentClick);
+    document.body.addEventListener('keydown', this.handleDocumentKeydown);
 
     this._element.appendChild(this._button);
     this._element.appendChild(this._menu);
@@ -77,5 +64,17 @@ export class DropdownButton {
 
   private toggleMenu() {
     this._menu.classList.toggle('hidden');
+  }
+
+  private handleDocumentClick = () => {
+    if (!this._menu.classList.contains("hidden")) {
+      this._menu.classList.add("hidden");
+    }
+  }
+
+  private handleDocumentKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && !this._menu.classList.contains("hidden")) {
+      this._menu.classList.add("hidden");
+    }
   }
 }

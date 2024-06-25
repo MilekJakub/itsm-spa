@@ -10,25 +10,42 @@ import { TableDataCell } from "../../../atoms/table/table-data-cell.ts";
 import { TableHeaderCell } from "../../../atoms/table/table-header-cell.ts";
 import { Header } from "../../../atoms/text/header.ts";
 import { Project } from "../../../../domain/project.ts";
-import { renderElement } from "../../../../infrastructure/ui/renderer.ts";
-import { routes } from "../../../../infrastructure/ui/router.ts";
+import { renderElement } from "../../../../infrastructure/services/renderer.ts";
+import { routes } from "../../../../infrastructure/services/router.ts";
 
 const createNavbar = (): Navbar => {
-  const navButton = new Button({classes: ["rounded-lg", "border", "border-transparent", "px-4", "py-2", "bg-white", "text-black", "cursor-pointer"]})
+  const navButton = new Button({
+    classes: [
+      "rounded-lg",
+      "border",
+      "border-transparent",
+      "px-4",
+      "py-2",
+      "bg-white",
+      "text-black",
+      "cursor-pointer",
+    ],
+  })
     .setText("Create")
-    .addEventListener("click", () => window.location.href = routes.projects.create.path)
+    .addEventListener(
+      "click",
+      () => (window.location.href = routes.projects.create.path),
+    )
     .getElement();
 
   const navHeading = new Header({
     type: "h2",
     text: "Your projects",
-    classes: ["font-bold"]
+    classes: ["font-bold"],
   }).getElement();
 
-  return new Navbar({id: "projects-navbar", classes: ["flex", "justify-between", "w-full", "p-4"]})
+  return new Navbar({
+    id: "navbar",
+    classes: ["flex", "justify-between", "w-full", "p-4"],
+  })
     .addHeader(navHeading)
     .addTool(navButton);
-}
+};
 
 const createTable = (projects: Project[]): Table => {
   const headers = new TableRow({classes: ["text-left", "border-b", "border-white"]})
@@ -46,7 +63,7 @@ const createTable = (projects: Project[]): Table => {
         new TableDataCell({value: project.description, classes: ["p-4"]}),
         new TableDataCell({value: createActionsButton(), classes: ["p-4"]})));
 
-  return new Table({id: "projects-table", classes: ["w-full", "border-collapse"]})
+  return new Table({id: "table", classes: ["w-full", "border-collapse"]})
     .addHeaderRow(headers)
     .addDataRows(data);
 }

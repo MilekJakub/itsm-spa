@@ -1,5 +1,5 @@
 import { Sidebar } from "../../../organisms/sidebar/sidebar.ts";
-import { renderElement } from "../../../../infrastructure/ui/renderer.ts";
+import { renderElement } from "../../../../infrastructure/services/renderer.ts";
 
 document.title = "Home";
 

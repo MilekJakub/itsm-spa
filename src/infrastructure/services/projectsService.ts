@@ -6,7 +6,9 @@ export class ProjectsService {
     const response = await fetch(`${backendUrl}/projects`);
 
     if (!response.ok) {
-      throw new Error(`[ERROR]: Failed to fetch the projects. Response code: ${response.status}`);
+      throw new Error(
+        `[ERROR]: Failed to fetch the projects. Response code: ${response.status}`,
+      );
     }
 
     const projects: Project[] = await response.json();

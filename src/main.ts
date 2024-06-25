@@ -1,6 +1,6 @@
 import { User } from "./domain/user.ts";
-import { renderPage } from "./infrastructure/ui/renderer.ts";
-import {resolveRoute, routes} from "./infrastructure/ui/router.ts";
+import { renderPage } from "./infrastructure/services/renderer.ts";
+import { resolveRoute, routes } from "./infrastructure/services/router.ts";
 
 function authorize(user: User): boolean {
   return !!user;

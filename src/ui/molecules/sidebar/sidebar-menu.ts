@@ -1,8 +1,8 @@
 import { SidebarMenuItem } from "../../atoms/sidebar/sidebar-menu-item.ts";
 
 interface SidebarMenuProps {
-  id?: string,
-  classes?: string[]
+  id?: string;
+  classes?: string[];
 }
 
 export class SidebarMenu {

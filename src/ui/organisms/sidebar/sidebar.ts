@@ -1,5 +1,5 @@
 import "./sidebar.css";
-import 'boxicons/css/boxicons.min.css';
+import "boxicons/css/boxicons.min.css";
 
 import { SidebarTop } from "../../molecules/sidebar/sidebar-top.ts";
 import { SidebarUser } from "../../molecules/sidebar/sidebar-user.ts";

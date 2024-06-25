@@ -1,5 +1,5 @@
-import {TableDataCell} from "../../atoms/table/table-data-cell.ts";
-import {TableHeaderCell} from "../../atoms/table/table-header-cell.ts";
+import { TableDataCell } from "../../atoms/table/table-data-cell.ts";
+import { TableHeaderCell } from "../../atoms/table/table-header-cell.ts";
 
 interface TableRowProps {
   id?: string;

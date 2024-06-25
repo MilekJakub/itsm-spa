@@ -1,17 +1,20 @@
-interface ButtonProps {
+import { SelectOption } from "./select-option";
+
+interface SelectProps {
   id?: string;
   classes?: string[];
-  text?: string;
+  options?: SelectOption[];
   disabled?: boolean;
 }
 
-export class Button {
+export class Select {
   private readonly _id: string | undefined;
-  private readonly _element: HTMLButtonElement;
+  private readonly _element: HTMLSelectElement;
+  private _options: SelectOption[] = [];
 
-  constructor({ id, classes, text, disabled }: ButtonProps = {}) {
-    this._element = document.createElement("button");
-    this._element.classList.add("button");
+  constructor({ id, classes, options, disabled }: SelectProps = {}) {
+    this._element = document.createElement("select");
+    this._element.classList.add("select");
 
     if (id) {
       this._id = id;
@@ -22,8 +25,8 @@ export class Button {
       this._element.classList.add(...classes);
     }
 
-    if (text) {
-      this._element.textContent = text;
+    if (options) {
+      this.setOptions(options);
     }
 
     if (disabled !== undefined) {
@@ -35,12 +38,17 @@ export class Button {
     return this._id;
   }
 
-  public getElement(): HTMLButtonElement {
+  public getElement(): HTMLSelectElement {
+    this._options.forEach(option => this._element.appendChild(option.getElement()));
     return this._element;
   }
 
-  public setText(text: string) {
-    this._element.textContent = text;
+  public setOptions(options: SelectOption[]): void {
+    this._options = options;
+  }
+
+  public setDisabled(disabled: boolean) {
+    this._element.disabled = disabled;
     return this;
   }
 
@@ -59,16 +67,10 @@ export class Button {
     return this;
   }
 
-  public setDisabled(disabled: boolean) {
-    this._element.disabled = disabled;
-    return this;
-  }
-
   public addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | AddEventListenerOptions
-  ) {
+    options?: boolean | AddEventListenerOptions) {
     this._element.addEventListener(type, listener, options);
     return this;
   }

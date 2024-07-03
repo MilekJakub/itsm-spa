@@ -8,7 +8,7 @@ interface InputProps {
 }
 
 export class Input {
-  private readonly _id: string | undefined;
+  private readonly _id?: string;
   private readonly _element: HTMLInputElement;
 
   constructor({ id, classes, type = 'text', value, placeholder, disabled }: InputProps = {}) {
@@ -43,7 +43,7 @@ export class Input {
     return this._id;
   }
 
-  public getElement(): HTMLInputElement {
+  public getElement() {
     return this._element;
   }
 

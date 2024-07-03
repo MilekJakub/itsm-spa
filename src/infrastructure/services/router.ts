@@ -38,7 +38,7 @@ export const routes: Routes = {
   }
 };
 
-export const findRoutePropsByPath = (searchPath: string): RouteProps | undefined => {
+export const findRoutePropsByPath = (searchPath: string) => {
   for (const routeName in routes) {
     const route = routes[routeName];
     for (const key in route) {

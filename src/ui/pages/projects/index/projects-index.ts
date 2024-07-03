@@ -13,7 +13,7 @@ import { Project } from "../../../../domain/project.ts";
 import { renderElement } from "../../../../infrastructure/services/renderer.ts";
 import { routes } from "../../../../infrastructure/services/router.ts";
 
-const createNavbar = (): Navbar => {
+const createNavbar = () => {
   const navButton = new Button({
     classes: [
       "rounded-lg",
@@ -47,7 +47,7 @@ const createNavbar = (): Navbar => {
     .addTool(navButton);
 };
 
-const createTable = (projects: Project[]): Table => {
+const createTable = (projects: Project[]) => {
   const headers = new TableRow({classes: ["text-left", "border-b", "border-white"]})
     .addHeaders(
       new TableHeaderCell({value: "Id", classes: ["p-4"]}),
@@ -68,7 +68,7 @@ const createTable = (projects: Project[]): Table => {
     .addDataRows(data);
 }
 
-const createActionsButton = (): HTMLElement => {
+const createActionsButton = () => {
   const dropdownButton = new DropdownButton({
     text: ":",
     containerClasses: ["flex", "w-100", "h-100", "justify-center"],

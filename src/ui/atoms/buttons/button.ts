@@ -6,7 +6,7 @@ interface ButtonProps {
 }
 
 export class Button {
-  private readonly _id: string | undefined;
+  private readonly _id?: string;
   private readonly _element: HTMLButtonElement;
 
   constructor({ id, classes, text, disabled }: ButtonProps = {}) {
@@ -35,7 +35,7 @@ export class Button {
     return this._id;
   }
 
-  public getElement(): HTMLButtonElement {
+  public getElement() {
     return this._element;
   }
 

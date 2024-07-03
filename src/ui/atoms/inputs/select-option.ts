@@ -14,7 +14,7 @@ export class SelectOption {
     this._element.selected = selected;
   }
 
-  public getElement(): HTMLOptionElement {
+  public getElement() {
     return this._element;
   }
 

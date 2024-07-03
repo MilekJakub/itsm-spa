@@ -2,7 +2,7 @@ import { User } from "./domain/user.ts";
 import { renderPage } from "./infrastructure/services/renderer.ts";
 import { resolveRoute, routes } from "./infrastructure/services/router.ts";
 
-function authorize(user: User): boolean {
+function authorize(user: User) {
   return !!user;
 }
 

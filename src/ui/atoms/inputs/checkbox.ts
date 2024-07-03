@@ -8,7 +8,7 @@ interface CheckboxProps {
 }
 
 export class Checkbox {
-  private readonly _id: string | undefined;
+  private readonly _id?: string;
   private readonly _element: HTMLInputElement;
 
   constructor({ id, classes, name, value, checked, disabled }: CheckboxProps = {}) {
@@ -42,7 +42,7 @@ export class Checkbox {
     }
   }
 
-  public getId(): string | undefined {
+  public getId() {
     return this._id;
   }
 
@@ -94,7 +94,7 @@ export class Checkbox {
     return this;
   }
 
-  public remove(): void {
+  public remove() {
     if (this._element.parentElement) {
       this._element.parentElement.removeChild(this._element);
     }

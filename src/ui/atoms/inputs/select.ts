@@ -8,7 +8,7 @@ interface SelectProps {
 }
 
 export class Select {
-  private readonly _id: string | undefined;
+  private readonly _id?: string;
   private readonly _element: HTMLSelectElement;
   private _options: SelectOption[] = [];
 
@@ -38,12 +38,12 @@ export class Select {
     return this._id;
   }
 
-  public getElement(): HTMLSelectElement {
+  public getElement() {
     this._options.forEach(option => this._element.appendChild(option.getElement()));
     return this._element;
   }
 
-  public setOptions(options: SelectOption[]): void {
+  public setOptions(options: SelectOption[]) {
     this._options = options;
   }
 

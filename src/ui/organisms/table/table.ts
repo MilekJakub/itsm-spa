@@ -9,7 +9,7 @@ export class Table {
   private readonly _id: string;
   private readonly _element: HTMLTableElement;
   private _hasHeaderRow: boolean;
-  private _headerRow: TableRow | undefined;
+  private _headerRow?: TableRow;
   private _dataRows: TableRow[] = [];
 
   constructor({ id, classes }: TableProps) {

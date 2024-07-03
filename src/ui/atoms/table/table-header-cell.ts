@@ -21,7 +21,7 @@ export class TableHeaderCell {
     }
   }
 
-  public getElement(): HTMLElement {
+  public getElement() {
     return this._element;
   }
 }

@@ -10,7 +10,7 @@ interface TextareaProps {
 }
 
 export class Textarea {
-  private readonly _id: string | undefined;
+  private readonly _id?: string;
   private readonly _element: HTMLTextAreaElement;
 
   constructor({ id, classes, placeholder, value, rows, cols, disabled, readonly }: TextareaProps = {}) {
@@ -51,7 +51,7 @@ export class Textarea {
     }
   }
 
-  public getId(): string | undefined {
+  public getId() {
     return this._id;
   }
 
@@ -113,7 +113,7 @@ export class Textarea {
     return this;
   }
 
-  public remove(): void {
+  public remove() {
     if (this._element.parentElement) {
       this._element.parentElement.removeChild(this._element);
     }
